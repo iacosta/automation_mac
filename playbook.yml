@@ -1,55 +1,86 @@
-- hosts: localhost
-  gather_facts: no
+---
+- name: Instalar aplicaciones en Mac
+  hosts: localhost
   become: yes
 
-  vars:
-    apps:
-      - name: "AdBlock"
-        url: "https://adblockforchrome.github.io/mac/AdBlock.dmg"
-      - name: "AdGuard for Safari"
-        url: "https://adguard.com/d/13852/AdGuard-for-Safari-1.4.4-187.pkg"
-      - name: "Adobe Acrobat Reader"
-        url: "https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/2101020033/AcrobatDCUpd2101020033.dmg"
-      - name: "Alfred 4"
-        url: "https://cachefly.alfredapp.com/Alfred_4.5_1240.dmg"
-      - name: "AnyDesk"
-        url: "https://download.anydesk.com/AnyDesk.dmg"
-      - name: "AppCleaner"
-        url: "https://freemacsoft.net/downloads/AppCleaner_3.5.zip"
-      - name: "Archi"
-        url: "https://www.archimatetool.com/downloads/archi/4.8/Archi-Mac-4.8.tgz"
-      - name: "Asana"
-        url: "https://asa.na/Asana.dmg"
-      - name: "Automator"
-      - name: "Bitwarden"
-        url: "https://vault.bitwarden.com/download/?app=desktop&platform=macos"
-      - name: "BlueJeans"
-        url: "https://swdl.bluejeans.com/desktop-app/mac/2.23.1/2.23.1.2808/BlueJeansInstaller.pkg"
-      - name: "Books"
-      - name: "Buffer"
-        url: "https://buffer.com/resources/downloads/buffer-mac.zip"
-      - name: "Calculator"
-      - name: "Calendar"
-      - name: "CheatSheet"
-        url: "https://mediaatelier.com/CheatSheet/CheatSheet_1.3.4.zip"
-      - name: "Chess"
-      - name: "Clock"
-      - name: "Clocker"
-        url: "https://github.com/n0shake/Clocker/releases/download/1.6.2/Clocker-1.6.2.dmg"
-      - name: "Contacts"
-      - name: "DemoPro"
-        url: "https://www.demopro.com/downloads/DemoPro.dmg"
-      - name: "Dictionary"
-      - name: "Docker"
-        url: "https://desktop.docker.com/mac/stable/Docker.dmg"
-      - name: "Dozer"
-        url: "https://github.com/Mortennn/Dozer/releases/download/v5.1.0/Dozer.app.zip"
-      - name: "draw.io"
-        url: "https://github.com/jgraph/drawio-desktop/releases/download/v15.5.4/draw.io-15.5.4-mac.dmg"
-      - name: "Evernote"
-        url: "https://cdn1.evernote.com/mac-smd/public/Evernote_RELEASE_10.22.5_455707.zip"
-      - name: "FaceTime"
-      - name: "Fig"
-        url: "https://withfig.com/downloads/fig-macos-latest.zip"
-      - name: "Find My"
-      - name:
+  tasks:
+    - name: Instalar Homebrew
+      shell: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      args:
+        creates: /usr/local/bin/brew
+
+    - name: Instalar aplicaciones de Brew
+      become: yes
+      become_user: "{{ lookup('env','USER') }}"
+      shell: brew install {{ item }}
+      loop:
+        - git
+        - node
+        - python
+        - wget
+        - tree
+        - htop
+        - tmux
+        - zsh
+
+    - name: Instalar aplicaciones
+      become: yes
+      become_user: "{{ lookup('env','USER') }}"
+      shell: open -W "{{ item }}"
+      loop:
+        - /Applications/AdBlock.app
+        - /Applications/AdGuard for Safari.app
+        - /Applications/Adobe Acrobat Reader DC.app
+        - /Applications/Alfred 4.app
+        - /Applications/AnyDesk.app
+        - /Applications/App Store.app
+        - /Applications/AppCleaner.app
+        - /Applications/Archi.app
+        - /Applications/Asana.app
+        - /Applications/Automator.app
+        - /Applications/Bitwarden.app
+        - /Applications/BlueJeans.app
+        - /Applications/Books.app
+        - /Applications/Buffer.app
+        - /Applications/Calculator.app
+        - /Applications/Calendar.app
+        - /Applications/CheatSheet.app
+        - /Applications/Chess.app
+        - /Applications/Clock.app
+        - /Applications/Clocker.app
+        - /Applications/Contacts.app
+        - /Applications/DemoPro.app
+        - /Applications/Dictionary.app
+        - /Applications/Docker.app
+        - /Applications/Dozer.app
+        - /Applications/draw.io.app
+        - /Applications/Evernote.app
+        - /Applications/FaceTime.app
+        - /Applications/Fig.app
+        - /Applications/Find My.app
+        - /Applications/Firefox.app
+        - /Applications/Flux.app
+        - /Applications/Focus To-Do.app
+        - /Applications/Font Book.app
+        - /Applications/Freeform.app
+        - /Applications/GoodNotes.app
+        - /Applications/Google Chrome.app
+        - /Applications/Google Docs.app
+        - /Applications/Google Drive.app
+        - /Applications/Google Sheets.app
+        - /Applications/Google Slides.app
+        - /Applications/Grammarly Desktop.app
+        - /Applications/Grammarly for Safari.app
+        - /Applications/HiddenMe.app
+        - /Applications/Home.app
+        - /Applications/Image Capture.app
+        - /Applications/Install Spotify.app
+        - /Applications/iStat Menus.app
+        - /Applications/iTerm.app
+        - /Applications/Itsycal.app
+        - /Applications/JWS Helper.app
+        - /Applications/Keynote.app
+        - /Applications/Kindle.app
+        - /Applications/Launchpad.app
+        - /Applications/Lens.app
