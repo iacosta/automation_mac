@@ -1,0 +1,82 @@
+1Password.app
+AdBlock.app
+AdGuard for Safari.app
+Adobe Acrobat Reader.app
+Alfred 4.app
+AppCleaner.app
+Archi.app
+Asana.app
+BetterTDeck for TweetDeck.app
+Bitwarden.app
+BlueJeans.app
+Buffer.app
+CheatSheet.app
+Clocker.app
+CodeReady Containers.app
+DemoPro.app
+DiffusionBee.app
+Evernote.app
+Fig.app
+Firefox.app
+Flux.app
+GoodNotes.app
+Google Chrome.app
+Google Docs.app
+Google Drive.app
+Google Sheets.app
+Google Slides.app
+Grammarly Desktop.app
+Grammarly for Safari.app
+Hidden Bar.app
+HiddenMe.app
+HotKey.app
+Install Spotify.app
+Itsycal.app
+JWS Helper.app
+Keynote.app
+Kindle.app
+Lens.app
+LibreOffice.app
+LiquidText.app
+Maccy.app
+Managed Software Center.app
+Microsoft Edge.app
+Microsoft Outlook.app
+Microsoft Remote Desktop.app
+Microsoft Teams.app
+Min.app
+Miro.app
+MonitorControl.app
+Notion.app
+Numbers.app
+OBS.app
+OnVUE.app
+Pages.app
+Podman Desktop.app
+Postman.app
+Raycast.app
+Readwise_iBooks.app
+Rectangle.app
+Red Hat Mac Info.app
+Red Hat Printer Setup.app
+Safari.app
+ScreenBrush.app
+SentinelOne
+Slack.app
+Spotify.app
+The Unarchiver.app
+Thunderbird.app
+TinkerTool.app
+Unsplash Wallpapers.app
+Utilities
+Übersicht.app
+VirtualBox.app
+Viscosity.app
+Visual Studio Code.app
+WebPomodoro.app
+Xcode.app
+draw.io.app
+feedly.app
+iStat Menus.app
+iTerm.app
+zoom.us.app
