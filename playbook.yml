@@ -10,77 +10,10 @@
       args:
         creates: /usr/local/bin/brew
 
-    - name: Instalar aplicaciones de Brew
+     - name: Instalar aplicaciones
+      shell: |
+        xargs brew cask install < /ruta/de/destino/en/tu/servidor/aplicaciones.txt
+      args:
+        executable: /bin/bash
       become: yes
-      become_user: "{{ lookup('env','USER') }}"
-      shell: brew install {{ item }}
-      loop:
-        - git
-        - node
-        - python
-        - wget
-        - tree
-        - htop
-        - tmux
-        - zsh
-
-    - name: Instalar aplicaciones
-      become: yes
-      become_user: "{{ lookup('env','USER') }}"
-      shell: open -W "{{ item }}"
-      loop:
-        - /Applications/AdBlock.app
-        - /Applications/AdGuard for Safari.app
-        - /Applications/Adobe Acrobat Reader DC.app
-        - /Applications/Alfred 4.app
-        - /Applications/AnyDesk.app
-        - /Applications/App Store.app
-        - /Applications/AppCleaner.app
-        - /Applications/Archi.app
-        - /Applications/Asana.app
-        - /Applications/Automator.app
-        - /Applications/Bitwarden.app
-        - /Applications/BlueJeans.app
-        - /Applications/Books.app
-        - /Applications/Buffer.app
-        - /Applications/Calculator.app
-        - /Applications/Calendar.app
-        - /Applications/CheatSheet.app
-        - /Applications/Chess.app
-        - /Applications/Clock.app
-        - /Applications/Clocker.app
-        - /Applications/Contacts.app
-        - /Applications/DemoPro.app
-        - /Applications/Dictionary.app
-        - /Applications/Docker.app
-        - /Applications/Dozer.app
-        - /Applications/draw.io.app
-        - /Applications/Evernote.app
-        - /Applications/FaceTime.app
-        - /Applications/Fig.app
-        - /Applications/Find My.app
-        - /Applications/Firefox.app
-        - /Applications/Flux.app
-        - /Applications/Focus To-Do.app
-        - /Applications/Font Book.app
-        - /Applications/Freeform.app
-        - /Applications/GoodNotes.app
-        - /Applications/Google Chrome.app
-        - /Applications/Google Docs.app
-        - /Applications/Google Drive.app
-        - /Applications/Google Sheets.app
-        - /Applications/Google Slides.app
-        - /Applications/Grammarly Desktop.app
-        - /Applications/Grammarly for Safari.app
-        - /Applications/HiddenMe.app
-        - /Applications/Home.app
-        - /Applications/Image Capture.app
-        - /Applications/Install Spotify.app
-        - /Applications/iStat Menus.app
-        - /Applications/iTerm.app
-        - /Applications/Itsycal.app
-        - /Applications/JWS Helper.app
-        - /Applications/Keynote.app
-        - /Applications/Kindle.app
-        - /Applications/Launchpad.app
-        - /Applications/Lens.app
+      become_method: sudo
